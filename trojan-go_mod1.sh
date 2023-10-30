@@ -351,7 +351,9 @@ installNginx() {
     echo ""
     colorEcho $BLUE " 安装nginx..."
     if [[ "$BT" = "false" ]]; then
+        echo "BT is $bt"
         if [[ "$PMT" = "yum" ]]; then
+            echo "PMT is $PMT"
             $CMD_INSTALL epel-release
             if [[ "$?" != "0" ]]; then
                 echo '[nginx-stable]
@@ -364,6 +366,7 @@ module_hotfixes=true' > /etc/yum.repos.d/nginx.repo
             fi
         fi
         $CMD_INSTALL nginx
+        echo "CMD_INSTALL is $CMD_INSTALL"
         if [[ "$?" != "0" ]]; then
             colorEcho $RED " Nginx安装失败，请到 https://hijk.art 反馈"
             exit 1
